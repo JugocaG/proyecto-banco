@@ -1,29 +1,48 @@
 package com.unisabana.proyectobanco;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.*;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @Getter
 @Setter
 @RestController
 public class ClienteController {
-    private ClienteRepository clienteRepository;
 
-    public ClienteController(ClienteRepository clienteRepository) {
-        this.clienteRepository = clienteRepository;
+    private ClienteLogica logica;
+
+    public ClienteController(ClienteLogica logica) {
+        this.logica = logica;
     }
 
     @GetMapping(path = "/clientes")
     public List<Cliente> obtenerCliente() {
-
-        return clienteRepository.findAll();
+        return logica.verCliente();
     }
 
     @GetMapping(path = "/saludar")
     public String saludar(){
         return "Saludos jovenes";
     }
+
+    @PostMapping(path = "/crear")
+    public String crearCliente(@RequestBody Cliente cliente){
+
+        try{
+            logica.guardarCliente(cliente);
+            return "El cliente se guardo de manera exitosa";
+        }
+        catch (IllegalArgumentException e){
+            return "Cliente con nombre prohibido";
+        }
+
+
+    }
+
+//    @DeleteMapping(path = "/eliminar")
+//    public String eliminarCliente(@RequestBody Cliente cliente){
+//        clienteRepository.deleteById(cliente.getId());
+//        return "El cliente se elimino con exito";
+//    }
 }
