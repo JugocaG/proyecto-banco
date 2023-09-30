@@ -34,7 +34,9 @@ public class ClienteController {
             return "El cliente se guardo de manera exitosa";
         }
         catch (IllegalArgumentException e){
+            String hola = "Pene";
             return "Cliente con nombre prohibido";
+
         }
 
 
