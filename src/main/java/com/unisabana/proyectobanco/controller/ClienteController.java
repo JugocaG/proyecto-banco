@@ -32,7 +32,6 @@ public class ClienteController {
         }
         catch (IllegalArgumentException e){
             return "Cliente con nombre prohibido";
-
         }
     }
 
