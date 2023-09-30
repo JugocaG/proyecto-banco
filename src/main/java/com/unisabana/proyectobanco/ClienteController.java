@@ -27,15 +27,14 @@ public class ClienteController {
     }
 
     @PostMapping(path = "/crear")
-    public String crearCliente(@RequestBody ClienteDTO clienteDTO){
+    public String crearCliente(@RequestBody Cliente cliente){
 
         try{
-            logica.guardarCliente(clienteDTO);
+            logica.guardarCliente(cliente);
             return "El cliente se guardo de manera exitosa";
         }
         catch (IllegalArgumentException e){
-            return "Cliente con id repetido, ";
-
+            return "Cliente con nombre prohibido";
         }
 
 
