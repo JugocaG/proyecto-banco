@@ -3,10 +3,7 @@ package com.unisabana.proyectobanco;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Setter
@@ -15,7 +12,8 @@ import javax.persistence.Table;
 public class Cliente {
 
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contador_id")
+    @Column(name = "id")
     private int id;
 
     @Column

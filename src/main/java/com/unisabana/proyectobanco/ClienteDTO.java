@@ -3,18 +3,15 @@ package com.unisabana.proyectobanco;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
+
 @Getter
 @Setter
 public class ClienteDTO {
 
     public ClienteDTO() {
     }
-
-    private int id;
     private String nombre;
-    private int numeroCuentasCorriente;
-    private int numeroCuentasAhorro;
-    private int numeroTarjetasCredito;
 
 
 }

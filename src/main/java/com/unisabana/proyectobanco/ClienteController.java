@@ -34,7 +34,7 @@ public class ClienteController {
             return "El cliente se guardo de manera exitosa";
         }
         catch (IllegalArgumentException e){
-            return "Cliente con nombre prohibido";
+            return "Cliente con id repetido, ";
 
         }
 

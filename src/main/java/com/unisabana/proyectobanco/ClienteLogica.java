@@ -22,8 +22,6 @@ public class ClienteLogica {
             throw new IllegalArgumentException("Nombre prohibido");
         }
         Cliente cliente = new Cliente();
-
-        cliente.setId(clienteDTO.getId());
         cliente.setNombre(clienteDTO.getNombre());
         cliente.setNumeroTarjetasCredito(0);
         cliente.setNumeroCuentasCorriente(0);
