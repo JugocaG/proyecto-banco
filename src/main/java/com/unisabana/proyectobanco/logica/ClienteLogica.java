@@ -22,7 +22,7 @@ public class ClienteLogica {
     public List<Cliente> verCliente(){
         return clienteRepository.findAll();
     }
-    public void guardarCliente(ClienteDTO clienteDTO){
+    public Cliente guardarCliente(ClienteDTO clienteDTO){
         Cliente cliente = new Cliente();
         cliente.setId(clienteDTO.getId());
         cliente.setNombre(clienteDTO.getNombre());
@@ -30,6 +30,7 @@ public class ClienteLogica {
         cliente.setNumeroCuentasCorriente(0);
         cliente.setNumeroTarjetasCredito(0);
         clienteRepository.save(cliente);
+        return cliente;
     }
 
     public void sumarCuenta(CuentaDTO cuentaDTO){
