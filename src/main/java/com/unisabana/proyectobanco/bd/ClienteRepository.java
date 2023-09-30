@@ -1,4 +1,4 @@
-package com.unisabana.proyectobanco;
+package com.unisabana.proyectobanco.bd;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

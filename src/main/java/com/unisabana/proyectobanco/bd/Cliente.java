@@ -1,26 +1,21 @@
-package com.unisabana.proyectobanco;
+package com.unisabana.proyectobanco.bd;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Setter
 @Getter
-@Table( name = "Cliente")
+@Table( name = "cliente")
 public class Cliente {
-
     @Id
     @Column
     private int id;
 
     @Column
     private String nombre;
-
 
     @Column(name = "numero_cuentas_corriente")
     private int numeroCuentasCorriente;
