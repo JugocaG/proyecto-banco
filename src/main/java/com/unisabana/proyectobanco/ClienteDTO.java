@@ -7,9 +7,14 @@ import lombok.Setter;
 @Setter
 public class ClienteDTO {
 
+    public ClienteDTO() {
+    }
+
     private int id;
     private String nombre;
     private int numeroCuentasCorriente;
     private int numeroCuentasAhorro;
     private int numeroTarjetasCredito;
+
+
 }
