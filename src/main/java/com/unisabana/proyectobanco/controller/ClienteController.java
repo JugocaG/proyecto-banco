@@ -1,5 +1,8 @@
-package com.unisabana.proyectobanco;
+package com.unisabana.proyectobanco.controller;
 
+import com.unisabana.proyectobanco.logica.ClienteLogica;
+import com.unisabana.proyectobanco.bd.Cliente;
+import com.unisabana.proyectobanco.controller.dto.ClienteDTO;
 import lombok.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,37 +13,29 @@ import java.util.List;
 @RestController
 public class ClienteController {
 
-    private ClienteLogica logica;
+    private ClienteLogica logicaCliente;
 
     public ClienteController(ClienteLogica logica) {
-        this.logica = logica;
+        this.logicaCliente = logica;
     }
 
-    @GetMapping(path = "/clientes")
+    @GetMapping(path = "/clientes/ver")
     public List<Cliente> obtenerCliente() {
-        return logica.verCliente();
+        return logicaCliente.verCliente();
     }
 
-    @GetMapping(path = "/saludar")
-    public String saludar(){
-        return "Saludos jovenes";
-    }
-
-    @PostMapping(path = "/crear")
-    public String crearCliente(@RequestBody Cliente cliente){
-
+    @PostMapping(path = "/clientes/crear")
+    public String crearCliente(@RequestBody ClienteDTO clienteDTO){
         try{
-            logica.guardarCliente(cliente);
+            logicaCliente.guardarCliente(clienteDTO);
             return "El cliente se guardo de manera exitosa";
         }
         catch (IllegalArgumentException e){
             return "Cliente con nombre prohibido";
         }
-
-
     }
 
-//    @DeleteMapping(path = "/eliminar")
+//    @DeleteMapping(path = "/clientes/eliminar")
 //    public String eliminarCliente(@RequestBody Cliente cliente){
 //        clienteRepository.deleteById(cliente.getId());
 //        return "El cliente se elimino con exito";
