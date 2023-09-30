@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.14'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-    jacoco
+    id 'jacoco'
 }
 
 group = 'com.unisabana'
@@ -35,14 +35,4 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
-jacoco {
-    toolVersion = '0.8.8'
-}
-task.jacocoTestReport {
-    dependsOn(task.test)
-    reports {
-        csv.required.ser(true)
-        xml.enabled true
-        html.enabled true
-    }
-}
+
