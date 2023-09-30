@@ -16,11 +16,13 @@ public class ClienteLogica {
     public List<Cliente> verCliente(){
         return clienteRepository.findAll();
     }
-    public void guardarCliente(Cliente cliente){
+    public Cliente guardarCliente(Cliente cliente){
 
         if ("Manuel".equals(cliente.getNombre())){
             throw new IllegalArgumentException("Nombre prohibido");
         }
         clienteRepository.save(cliente);
+        return cliente;
     }
+
 }
