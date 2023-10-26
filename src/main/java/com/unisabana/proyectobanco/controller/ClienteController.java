@@ -28,10 +28,10 @@ public class ClienteController {
     public String crearCliente(@RequestBody ClienteDTO clienteDTO){
         try{
             logicaCliente.guardarCliente(clienteDTO);
-            return "El cliente se guardo de manera exitosa";
+            return new String ("El cliente se guardo de manera exitosa");
         }
         catch (IllegalArgumentException e){
-            return "Cliente con nombre prohibido";
+            return new String("Cliente con nombre prohibido" + e.getMessage()) ;
         }
     }
 
