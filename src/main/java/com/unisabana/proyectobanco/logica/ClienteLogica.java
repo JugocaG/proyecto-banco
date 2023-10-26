@@ -28,7 +28,7 @@ public class ClienteLogica {
         cliente.setNombre(clienteDTO.getNombre());
         cliente.setNumeroTarjetasCredito(0);
         cliente.setNumeroCuentasCorriente(0);
-        cliente.setNumeroTarjetasCredito(0);
+        cliente.setNumeroCuentasAhorro(0);
         clienteRepository.save(cliente);
         return cliente;
     }

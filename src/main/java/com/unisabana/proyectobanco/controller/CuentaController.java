@@ -32,7 +32,7 @@ public class CuentaController {
         return getLogicaCuenta().verCuenta();
     }
 
-    @PostMapping(path = "/cuentas/crear")
+    @PostMapping(path = "/cuenta/crear")
     public String crearCuenta(@RequestBody CuentaDTO cuentaDTO){
         try{
             logicaCuenta.crearCuenta(cuentaDTO);
