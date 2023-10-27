@@ -25,8 +25,7 @@ jobs:
       - name: Make Gradlew Executable
         run: chmod +x ./gradlew
 
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v1
+      - name: Gradle
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
-                gradle-version: '7.0'
-                arguments: build
+            arguments: build
