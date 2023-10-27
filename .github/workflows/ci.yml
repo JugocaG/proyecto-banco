@@ -1,0 +1,25 @@
+name: continous Integration
+on:
+  pull_request:
+    branches: ["master"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+      - uses: actions/checkout@v4
+      - name : set up java
+      - uses: actions/setup-java@v3
+        with:
+         distribution: 'temurin'
+         java-version: '20'
+      - uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25
+        with:
+           arguments: build
+      - name: Run Unit Tests
+        run: gradle test
