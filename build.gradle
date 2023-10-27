@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version '2.7.14'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
     id 'jacoco'
+    id("org.sonarqube") version "4.4.1.3373"
 }
 
 group = 'com.unisabana'
@@ -34,5 +35,11 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+sonarqube {
+    properties {
+        property("sonar.projectName", "yms-gate")
+    }
 }
 
