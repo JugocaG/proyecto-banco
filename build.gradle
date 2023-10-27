@@ -15,6 +15,11 @@ java {
     sourceCompatibility = '20'
 }
 
+pitest {
+    junit5PluginVersion = "1.0.0"
+}
+
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
