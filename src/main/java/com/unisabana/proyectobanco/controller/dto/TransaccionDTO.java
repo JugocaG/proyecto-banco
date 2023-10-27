@@ -5,8 +5,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ClienteDTO {
-    private int id;
-    private String nombre;
 
+public class TransaccionDTO {
+
+    private int cuentaOrigen;
+
+    private int cuentaDestino;
+
+    private int valor;
 }

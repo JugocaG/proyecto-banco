@@ -43,3 +43,24 @@ pitest {
 }
 
 
+
+jacoco {
+    toolVersion = "0.8.9"
+    layout.buildDirectory.dir("reports/jacoco")
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        csv.required = true
+        html.outputLocation = layout.buildDirectory.dir('build/reports/jacoco.html')
+    }
+}
+
+sonarqube {
+    properties {
+        property("sonar.projectName", "yms-gate")
+    }
+}
+

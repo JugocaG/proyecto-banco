@@ -1,16 +1,14 @@
 package com.unisabana.proyectobanco.controller;
 
 import com.unisabana.proyectobanco.bd.Cuenta;
+import com.unisabana.proyectobanco.controller.dto.ClienteDTO;
 import com.unisabana.proyectobanco.controller.dto.CuentaDTO;
 import com.unisabana.proyectobanco.logica.ClienteLogica;
 import com.unisabana.proyectobanco.logica.CuentaLogica;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class CuentaController {
         return getLogicaCuenta().verCuenta();
     }
 
-    @PostMapping(path = "/cuentas/crear")
+    @PostMapping(path = "/cuenta/crear")
     public String crearCuenta(@RequestBody CuentaDTO cuentaDTO){
         try{
             logicaCuenta.crearCuenta(cuentaDTO);
@@ -45,5 +43,11 @@ public class CuentaController {
         }
 
 
+    }
+
+    @DeleteMapping(path = "/cuenta/eliminar")
+    public String eliminarCliente(@RequestBody CuentaDTO cuentaDTO){
+        logicaCuenta.eliminarCuenta(cuentaDTO);
+        return "El cliente se elimino con exito";
     }
 }

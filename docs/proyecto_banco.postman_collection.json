@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "b9f9238e-7f65-4b86-a022-9f6900be23ba",
+		"name": "proyecto_banco",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29410461"
+	},
+	"item": [
+		{
+			"name": "agregar_cuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numero_cuenta\": 13065,\r\n    \"tipo_cuenta\": \"TARJETA_CREDITO\", //Tambien puede ser CUENTA_AHORROS y CUENTA_CORRIENTE\r\n    \"nivel\": \"EJECUTIVA\",\r\n    \"id_propietario\": 249441\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/cuentas/crear",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuentas",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear_cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 249441,\r\n    \"nombre\": \"Juan David\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/clientes/crear",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ver_cuentas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cuenta/ver",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuenta",
+						"ver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ver_clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/clientes/ver",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"ver"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

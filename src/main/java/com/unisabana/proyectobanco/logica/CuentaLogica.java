@@ -2,6 +2,7 @@ package com.unisabana.proyectobanco.logica;
 
 import com.unisabana.proyectobanco.bd.Cuenta;
 import com.unisabana.proyectobanco.bd.CuentaRepository;
+import com.unisabana.proyectobanco.controller.dto.ClienteDTO;
 import com.unisabana.proyectobanco.controller.dto.CuentaDTO;
 import org.springframework.stereotype.Service;
 
@@ -24,14 +25,17 @@ public class CuentaLogica {
 
     public void crearCuenta(CuentaDTO cuentaDTO){
         Cuenta cuenta = new Cuenta();
-        cuenta.setNumero_cuenta(cuentaDTO.getNumero_cuenta());
-        cuenta.setTipo_cuenta(cuentaDTO.getTipo_cuenta());
+        cuenta.setTipoCuenta(cuentaDTO.getTipoCuenta());
         cuenta.setNivel(cuentaDTO.getNivel());
-        cuenta.setId_propietario(cuentaDTO.getId_propietario());
+        cuenta.setIdPropietario(cuentaDTO.getIdPropietario());
         cuenta.setSaldo(0);
 
         cuentaRepository.save(cuenta);
 
+    }
+
+    public void eliminarCuenta(CuentaDTO cuentaDTO){
+        cuentaRepository.deleteById(cuentaDTO.getId());
     }
 
 
