@@ -24,7 +24,6 @@ jobs:
 
       - name: Make Gradlew Executable
         run: chmod +x ./gradlew
-        working-directory: C:\Users\sague\OneDrive\Escritorio\Proyecto_Banco
 
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v1
