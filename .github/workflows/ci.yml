@@ -23,10 +23,6 @@ jobs:
           java-version: '20'
 
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v1
+        uses:  gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25
         with:
-          gradle-version: '7.0'
           arguments: build
-
-      - name: Run Unit Tests
-        run: gradle test
