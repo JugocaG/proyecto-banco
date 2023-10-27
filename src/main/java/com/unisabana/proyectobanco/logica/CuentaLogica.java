@@ -2,6 +2,7 @@ package com.unisabana.proyectobanco.logica;
 
 import com.unisabana.proyectobanco.bd.Cuenta;
 import com.unisabana.proyectobanco.bd.CuentaRepository;
+import com.unisabana.proyectobanco.controller.dto.ClienteDTO;
 import com.unisabana.proyectobanco.controller.dto.CuentaDTO;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,10 @@ public class CuentaLogica {
 
         cuentaRepository.save(cuenta);
 
+    }
+
+    public void eliminarCuenta(CuentaDTO cuentaDTO){
+        cuentaRepository.deleteById(cuentaDTO.getId());
     }
 
 

@@ -37,7 +37,9 @@ public class ClienteController {
 
     @DeleteMapping(path = "/clientes/eliminar")
     public String eliminarCliente(@RequestBody ClienteDTO clienteDTO){
+        logicaCliente.eliminarCuentasCliente(clienteDTO);
         logicaCliente.eliminarCliente(clienteDTO);
+
         return "El cliente se elimino con exito";
     }
 }

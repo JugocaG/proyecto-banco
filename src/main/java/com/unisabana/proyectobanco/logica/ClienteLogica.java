@@ -3,19 +3,28 @@ package com.unisabana.proyectobanco.logica;
 import com.unisabana.proyectobanco.CuentaEnum;
 import com.unisabana.proyectobanco.bd.Cliente;
 import com.unisabana.proyectobanco.bd.ClienteRepository;
+import com.unisabana.proyectobanco.bd.Cuenta;
+import com.unisabana.proyectobanco.bd.CuentaRepository;
 import com.unisabana.proyectobanco.controller.dto.ClienteDTO;
 import com.unisabana.proyectobanco.controller.dto.CuentaDTO;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class ClienteLogica {
 
     private ClienteRepository clienteRepository;
 
-    public ClienteLogica(ClienteRepository clienteRepository) {
+    private CuentaRepository cuentaRepository;
+
+
+    public ClienteLogica(ClienteRepository clienteRepository, CuentaRepository cuentaRepository) {
         this.clienteRepository = clienteRepository;
+        this.cuentaRepository = cuentaRepository;
     }
 
     public List<Cliente> verCliente(){
@@ -54,5 +63,13 @@ public class ClienteLogica {
 
     public void eliminarCliente(ClienteDTO clienteDTO){
         clienteRepository.deleteById(clienteDTO.getId());
+    }
+
+    public void eliminarCuentasCliente(ClienteDTO clienteDTO){
+        List<Cuenta> cuentasEliminar = cuentaRepository.findByIdPropietario(clienteDTO.getId());
+        cuentasEliminar.forEach(cuenta -> {
+            cuentaRepository.delete(cuenta);
+        });
+
     }
 }
