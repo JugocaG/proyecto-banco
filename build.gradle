@@ -39,7 +39,7 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 pitest {
-    junit5PluginVersion = '1.0.0'
+    junit5PluginVersion = "1.0.0"
 }
 
 
