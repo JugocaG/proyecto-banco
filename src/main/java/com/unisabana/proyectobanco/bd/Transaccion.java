@@ -5,8 +5,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
-
 @Setter
 @Getter
 @Entity
@@ -15,18 +13,14 @@ import java.util.Date;
 public class Transaccion {
 
     @Id
-    @Column
-    private int id_transaccion;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int idTransaccion;
 
-    @Column
-    private int cuenta_origen;
+    private int cuentaOrigen;
 
-    @Column
-    private int cuenta_destino;
+    private int cuentaDestino;
 
-    @Column
     private int valor;
 
-    @Column
     private LocalDateTime fecha;
 }

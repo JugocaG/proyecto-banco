@@ -1,15 +1,12 @@
 package com.unisabana.proyectobanco.controller;
 
-import com.unisabana.proyectobanco.controller.dto.CuentaDTO;
+import com.unisabana.proyectobanco.bd.Transaccion;
 import com.unisabana.proyectobanco.controller.dto.TransaccionDTO;
 import com.unisabana.proyectobanco.logica.TransaccionLogica;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,6 +23,13 @@ public class TransaccionController {
     @PostMapping(path = "/transaccion/enviar")
     public String enviarDinero(@RequestBody TransaccionDTO transaccionDTO){
         logicaTransaccion.enviarDinero(transaccionDTO);
+        logicaTransaccion.guardarTransaccion(transaccionDTO);
+        logicaTransaccion.restarDinero(transaccionDTO);
         return "La transaccion se ha realizado con exito";
+    }
+
+    @GetMapping(path = "/transaccion/ver")
+    public List<Transaccion> obtenerTransaccion() {
+        return logicaTransaccion.verTrasacciones();
     }
 }

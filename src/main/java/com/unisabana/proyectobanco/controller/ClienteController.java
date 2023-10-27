@@ -28,16 +28,16 @@ public class ClienteController {
     public String crearCliente(@RequestBody ClienteDTO clienteDTO){
         try{
             logicaCliente.guardarCliente(clienteDTO);
-            return new String ("El cliente se guardo de manera exitosa");
+            return "El cliente se guardo de manera exitosa";
         }
         catch (IllegalArgumentException e){
-            return new String("Cliente con nombre prohibido" + e.getMessage()) ;
+            return "Cliente con nombre prohibido" + e.getMessage();
         }
     }
 
-//    @DeleteMapping(path = "/clientes/eliminar")
-//    public String eliminarCliente(@RequestBody Cliente cliente){
-//        clienteRepository.deleteById(cliente.getId());
-//        return "El cliente se elimino con exito";
-//    }
+    @DeleteMapping(path = "/clientes/eliminar")
+    public String eliminarCliente(@RequestBody ClienteDTO clienteDTO){
+        logicaCliente.eliminarCliente(clienteDTO);
+        return "El cliente se elimino con exito";
+    }
 }

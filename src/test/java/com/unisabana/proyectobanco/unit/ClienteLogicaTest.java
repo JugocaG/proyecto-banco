@@ -35,13 +35,13 @@ class ClienteLogicaTest {
 
     @Test
     void dado_estudiante_guardado_correctamente() {
-        ClienteDTO dto = new ClienteDTO(1,"pedro");
+        ClienteDTO dto = new ClienteDTO();
         Cliente cliente  = clienteLogica.guardarCliente(dto);
         Mockito.verify(clienteRepository).save(cliente);
     }
     @Test
     void Dado_cliente_prohibido_Cuando_intente_guardar_Entonces_arroja_excepxion() {
-        ClienteDTO dto = new ClienteDTO(1,"Manuel");
+        ClienteDTO dto = new ClienteDTO();
         assertThrows(IllegalArgumentException.class, () ->{
             clienteLogica.guardarCliente(dto);
         });
@@ -49,8 +49,8 @@ class ClienteLogicaTest {
     @Test
     void debeSumarUnaCuentaAhorro() {
         CuentaDTO cuentaDTO = new CuentaDTO();
-        cuentaDTO.setId_propietario(1);
-        cuentaDTO.setTipo_cuenta(CuentaEnum.CUENTA_AHORROS);
+        cuentaDTO.setIdPropietario(1);
+        cuentaDTO.setTipoCuenta(CuentaEnum.CUENTA_AHORROS);
 
         // Simula el clienteRepository con Mockito
         ClienteRepository clienteRepository = Mockito.mock(ClienteRepository.class);
@@ -70,8 +70,8 @@ class ClienteLogicaTest {
     @Test
     void debeSumarUnaCuentaCorriente() {
         CuentaDTO cuentaDTO = new CuentaDTO();
-        cuentaDTO.setId_propietario(1);
-        cuentaDTO.setTipo_cuenta(CuentaEnum.CUENTA_CORRIENTE);
+        cuentaDTO.setIdPropietario(1);
+        cuentaDTO.setTipoCuenta(CuentaEnum.CUENTA_CORRIENTE);
 
         // Simula el clienteRepository con Mockito
         ClienteRepository clienteRepository = Mockito.mock(ClienteRepository.class);
@@ -91,8 +91,8 @@ class ClienteLogicaTest {
     @Test
     void debeSumarTarjeta() {
         CuentaDTO cuentaDTO = new CuentaDTO();
-        cuentaDTO.setId_propietario(1);
-        cuentaDTO.setTipo_cuenta(CuentaEnum.TARJETA_CREDITO);
+        cuentaDTO.setIdPropietario(1);
+        cuentaDTO.setTipoCuenta(CuentaEnum.TARJETA_CREDITO);
 
         // Simula el clienteRepository con Mockito
         ClienteRepository clienteRepository = Mockito.mock(ClienteRepository.class);

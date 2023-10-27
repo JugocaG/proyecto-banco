@@ -8,12 +8,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CuentaDTO {
-    private int numero_cuenta;
 
-    private CuentaEnum tipo_cuenta;
+    private CuentaEnum tipoCuenta;
 
     private NivelEnum nivel;
 
-    private int id_propietario;
+    private int idPropietario;
 
 }

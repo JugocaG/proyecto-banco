@@ -24,10 +24,9 @@ public class CuentaLogica {
 
     public void crearCuenta(CuentaDTO cuentaDTO){
         Cuenta cuenta = new Cuenta();
-        cuenta.setNumero_cuenta(cuentaDTO.getNumero_cuenta());
-        cuenta.setTipo_cuenta(cuentaDTO.getTipo_cuenta());
+        cuenta.setTipoCuenta(cuentaDTO.getTipoCuenta());
         cuenta.setNivel(cuentaDTO.getNivel());
-        cuenta.setId_propietario(cuentaDTO.getId_propietario());
+        cuenta.setIdPropietario(cuentaDTO.getIdPropietario());
         cuenta.setSaldo(0);
 
         cuentaRepository.save(cuenta);

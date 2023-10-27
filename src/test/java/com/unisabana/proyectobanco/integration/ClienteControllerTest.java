@@ -21,7 +21,7 @@ public class ClienteControllerTest {
     private TestRestTemplate restTemplate;
     @Test
     public void guardarcliente(){
-        ClienteDTO dto = new ClienteDTO(1,"pedro");
+        ClienteDTO dto = new ClienteDTO();
         ResponseEntity<String> respuesta= restTemplate.postForEntity("/clientes/crear", dto,String.class);
         assertEquals(200, respuesta.getStatusCodeValue());
         assertEquals("El cliente se guardo de manera exitosa", respuesta.getBody());
