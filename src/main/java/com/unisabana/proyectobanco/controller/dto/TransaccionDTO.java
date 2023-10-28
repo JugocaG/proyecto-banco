@@ -13,4 +13,10 @@ public class TransaccionDTO {
     private int cuentaDestino;
 
     private int valor;
+
+    public TransaccionDTO(int cuentaOrigen, int cuentaDestino, int valor) {
+        this.cuentaOrigen = cuentaOrigen;
+        this.cuentaDestino = cuentaDestino;
+        this.valor = valor;
+    }
 }

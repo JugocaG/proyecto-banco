@@ -1,6 +1,7 @@
 package com.unisabana.proyectobanco.unit;
 
 import com.unisabana.proyectobanco.CuentaEnum;
+import com.unisabana.proyectobanco.NivelEnum;
 import com.unisabana.proyectobanco.bd.Cliente;
 import com.unisabana.proyectobanco.bd.ClienteRepository;
 import com.unisabana.proyectobanco.bd.CuentaRepository;
@@ -32,7 +33,7 @@ class ClienteLogicaTest {
 
     @Test
     void dado_estudiante_guardado_correctamente() {
-        ClienteDTO dto = new ClienteDTO();
+        ClienteDTO dto = new ClienteDTO(1, "pedro");
         Cliente cliente  = clienteLogica.guardarCliente(dto);
         Mockito.verify(clienteRepository).save(cliente);
     }
@@ -45,7 +46,7 @@ class ClienteLogicaTest {
 //    }
     @Test
     void debeSumarUnaCuentaAhorro() {
-        CuentaDTO cuentaDTO = new CuentaDTO();
+        CuentaDTO cuentaDTO = new CuentaDTO(1, CuentaEnum.CUENTA_AHORROS, NivelEnum.EJECUTIVA, 1);
         cuentaDTO.setIdPropietario(1);
         cuentaDTO.setTipoCuenta(CuentaEnum.CUENTA_AHORROS);
 
@@ -66,7 +67,7 @@ class ClienteLogicaTest {
     }
     @Test
     void debeSumarUnaCuentaCorriente() {
-        CuentaDTO cuentaDTO = new CuentaDTO();
+        CuentaDTO cuentaDTO = new CuentaDTO(1, CuentaEnum.CUENTA_CORRIENTE, NivelEnum.EJECUTIVA, 1);
         cuentaDTO.setIdPropietario(1);
         cuentaDTO.setTipoCuenta(CuentaEnum.CUENTA_CORRIENTE);
 
@@ -87,7 +88,7 @@ class ClienteLogicaTest {
     }
     @Test
     void debeSumarTarjeta() {
-        CuentaDTO cuentaDTO = new CuentaDTO();
+        CuentaDTO cuentaDTO = new CuentaDTO(1, CuentaEnum.TARJETA_CREDITO, NivelEnum.EJECUTIVA, 1);
         cuentaDTO.setIdPropietario(1);
         cuentaDTO.setTipoCuenta(CuentaEnum.TARJETA_CREDITO);
 

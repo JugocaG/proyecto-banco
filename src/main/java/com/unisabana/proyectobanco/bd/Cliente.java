@@ -11,13 +11,16 @@ import javax.persistence.*;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private int id;
+
+    @Column
     private String nombre;
-
+    @Column
     private int numeroCuentasCorriente;
-
+    @Column
     private int numeroCuentasAhorro;
-
+    @Column
     private int numeroTarjetasCredito;
 
 }
