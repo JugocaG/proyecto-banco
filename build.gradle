@@ -5,6 +5,7 @@ plugins {
     id 'jacoco'
     id 'info.solidsoft.pitest' version '1.9.11'
     id("org.sonarqube") version "4.4.1.3373"
+    id "com.avast.gradle.docker-compose" version "0.17.0"
 }
 
 group = 'com.unisabana'
@@ -67,5 +68,9 @@ sonarqube {
     properties {
         property("sonar.projectName", "yms-gate")
     }
+}
+
+dockerCompose {
+    useComposeFiles = ['docker-compose.yml']
 }
 
