@@ -16,4 +16,10 @@ public class CuentaDTO {
 
     private int idPropietario;
 
+    public CuentaDTO(int id, CuentaEnum tipoCuenta, NivelEnum nivel, int idPropietario) {
+        this.id = id;
+        this.tipoCuenta = tipoCuenta;
+        this.nivel = nivel;
+        this.idPropietario = idPropietario;
+    }
 }
