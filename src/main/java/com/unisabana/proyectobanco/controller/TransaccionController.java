@@ -10,8 +10,8 @@ import java.util.List;
 
 @Getter
 @Setter
-
 @RestController
+@RequestMapping("/transaccion")
 public class TransaccionController {
 
     private TransaccionLogica logicaTransaccion;
@@ -20,7 +20,7 @@ public class TransaccionController {
         this.logicaTransaccion = logicaTransaccion;
     }
 
-    @PostMapping(path = "/transaccion/enviar")
+    @PostMapping(path = "enviar")
     public String enviarDinero(@RequestBody TransaccionDTO transaccionDTO){
         logicaTransaccion.enviarDinero(transaccionDTO);
         logicaTransaccion.guardarTransaccion(transaccionDTO);
@@ -28,7 +28,7 @@ public class TransaccionController {
         return "La transaccion se ha realizado con exito";
     }
 
-    @GetMapping(path = "/transaccion/ver")
+    @GetMapping(path = "ver")
     public List<Transaccion> obtenerTransaccion() {
         return logicaTransaccion.verTrasacciones();
     }

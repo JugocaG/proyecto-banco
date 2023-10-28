@@ -6,6 +6,8 @@ plugins {
     id 'info.solidsoft.pitest' version '1.9.11'
     id("org.sonarqube") version "4.4.1.3373"
     id "com.avast.gradle.docker-compose" version "0.17.0"
+    id "org.hidetake.swagger.generator" version "2.19.2"
+
 }
 
 group = 'com.unisabana'
@@ -39,7 +41,23 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation "org.springframework.boot:spring-boot-starter-security"
+    swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.47'
+
+
 }
+
+swaggerSources {
+    petstore {
+        inputFile = file('petstore.yaml')
+        code {
+            language = 'html'
+            jvmArgs = ['--add-opens=java.base/java.util=ALL-UNNAMED'] // for Swagger Codegen v3 on Java 16+
+        }
+    }
+}
+
+build.dependsOn generateSwaggerUI
 
 tasks.named('test') {
     useJUnitPlatform()
@@ -74,3 +92,11 @@ dockerCompose {
     useComposeFiles = ['docker-compose.yml']
 }
 
+//resolve {
+//    outputFileName = 'PetStoreAPI'
+//    outputFormat = 'JSON'
+//    prettyPrint = 'TRUE'
+//    classpath = sourceSets.main.runtimeClasspath
+//    resourcePackages = ['io.test']
+//    outputDir = file('test')
+//}
