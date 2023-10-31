@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"numero_cuenta\": 13065,\r\n    \"tipo_cuenta\": \"TARJETA_CREDITO\", //Tambien puede ser CUENTA_AHORROS y CUENTA_CORRIENTE\r\n    \"nivel\": \"EJECUTIVA\",\r\n    \"id_propietario\": 249441\r\n}",
+					"raw": "{\r\n    \"tipoCuenta\": \"CUENTA_AHORROS\", //CUENTA_AHORROS, CUENTA_CORRIENTE y TARJETA_CREDITO\r\n    \"nivel\": \"GENERAL\", //GENERAL, EJECUTIVA\r\n    \"idPropietario\": 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,13 +21,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/cuentas/crear",
+					"raw": "localhost:8080/api/cuenta/crear",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"cuentas",
+						"api",
+						"cuenta",
 						"crear"
 					]
 				}
@@ -41,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 249441,\r\n    \"nombre\": \"Juan David\"\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Juan Gomez\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -49,14 +50,44 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/clientes/crear",
+					"raw": "localhost:8080/api/clientes/crear",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"clientes",
 						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "enviar_dinero",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cuentaOrigen\": 2,\r\n    \"cuentaDestino\": 3,\r\n    \"valor\": 100000\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/transaccion/enviar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transaccion",
+						"enviar"
 					]
 				}
 			},
@@ -68,12 +99,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/cuenta/ver",
+					"raw": "localhost:8080/api/cuenta/ver",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"cuenta",
 						"ver"
 					]
@@ -87,14 +119,93 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/clientes/ver",
+					"raw": "localhost:8080/api/clientes/ver",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"clientes",
 						"ver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ver_transacciones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/transaccion/ver",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transaccion",
+						"ver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/clientes/eliminar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 22\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/clientes/eliminar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes",
+						"eliminar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/cuenta/eliminar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 12345\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/cuenta/eliminar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuenta",
+						"eliminar"
 					]
 				}
 			},
