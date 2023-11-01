@@ -55,5 +55,9 @@ public class TransaccionLogica {
         return transaccion;
     }
 
+    public void hacerDeposito(TransaccionDTO transaccionDTO){
+
+    }
+
 
 }

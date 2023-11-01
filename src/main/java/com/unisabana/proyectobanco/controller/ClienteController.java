@@ -11,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @RestController
+@RequestMapping(path = "/api/cliente")
 public class ClienteController {
 
     private ClienteLogica logicaCliente;
@@ -19,12 +20,12 @@ public class ClienteController {
         this.logicaCliente = logica;
     }
 
-    @GetMapping(path = "/clientes/ver")
+    @GetMapping(path = "/ver")
     public List<Cliente> obtenerCliente() {
         return logicaCliente.verCliente();
     }
 
-    @PostMapping(path = "/clientes/crear")
+    @PostMapping(path = "/crear")
     public String crearCliente(@RequestBody ClienteDTO clienteDTO){
         try{
             logicaCliente.guardarCliente(clienteDTO);
@@ -35,7 +36,7 @@ public class ClienteController {
         }
     }
 
-    @DeleteMapping(path = "/clientes/eliminar")
+    @DeleteMapping(path = "/eliminar")
     public String eliminarCliente(@RequestBody ClienteDTO clienteDTO){
         logicaCliente.eliminarCuentasCliente(clienteDTO);
         logicaCliente.eliminarCliente(clienteDTO);
