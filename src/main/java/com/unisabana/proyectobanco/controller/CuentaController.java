@@ -15,6 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @RestController
+@RequestMapping(path = "/api/cuenta")
 public class CuentaController {
 
     private CuentaLogica logicaCuenta;
@@ -25,12 +26,12 @@ public class CuentaController {
         this.logicaCliente = logicaCliente;
     }
 
-    @GetMapping(path = "/cuenta/ver")
+    @GetMapping(path = "ver")
     public List<Cuenta> obtenerCuenta() {
         return getLogicaCuenta().verCuenta();
     }
 
-    @PostMapping(path = "/cuenta/crear")
+    @PostMapping(path = "crear")
     public String crearCuenta(@RequestBody CuentaDTO cuentaDTO){
         try{
             logicaCuenta.crearCuenta(cuentaDTO);
@@ -45,7 +46,7 @@ public class CuentaController {
 
     }
 
-    @DeleteMapping(path = "/cuenta/eliminar")
+    @DeleteMapping(path = "eliminar")
     public String eliminarCliente(@RequestBody CuentaDTO cuentaDTO){
         logicaCuenta.eliminarCuenta(cuentaDTO);
         return "El cliente se elimino con exito";

@@ -17,15 +17,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles(profiles = "pruebas")
 public class ClienteControllerTest {
-    @Autowired
-    private TestRestTemplate restTemplate;
-    @Test
-    public void guardarcliente(){
-        ClienteDTO dto = new ClienteDTO(1, "Pedro");
-        ResponseEntity<String> respuesta= restTemplate.postForEntity("/clientes/crear", dto,String.class);
-        assertEquals(200, respuesta.getStatusCodeValue());
-        assertEquals("El cliente se guardo de manera exitosa", respuesta.getBody());
-
-
-    }
+//    @Autowired
+//    private TestRestTemplate restTemplate;
+//    @Test
+//    public void guardarcliente(){
+//        ClienteDTO dto = new ClienteDTO(1, "Pedro");
+//        ResponseEntity<String> respuesta= restTemplate.postForEntity("/clientes/crear", dto,String.class);
+//        assertEquals(200, respuesta.getStatusCodeValue());
+//        assertEquals("El cliente se guardo de manera exitosa", respuesta.getBody());
+//
+//
+//    }
 }

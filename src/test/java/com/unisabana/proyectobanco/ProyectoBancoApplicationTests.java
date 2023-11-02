@@ -12,8 +12,6 @@ class ProyectoBancoApplicationTests {
 
     @Test
     void contextLoads() {
-
-
     }
 
 }
