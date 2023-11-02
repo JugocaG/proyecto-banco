@@ -36,6 +36,8 @@ public class TransaccionController {
 
     @PostMapping(path = "deposito")
     public String hacerDeposito(@RequestBody TransaccionDTO transaccionDTO){
+        logicaTransaccion.hacerDeposito(transaccionDTO);
         return "El deposito se ha realizado con exito";
     }
+
 }

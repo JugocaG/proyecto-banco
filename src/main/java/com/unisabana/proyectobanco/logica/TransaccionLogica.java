@@ -56,7 +56,12 @@ public class TransaccionLogica {
     }
 
     public void hacerDeposito(TransaccionDTO transaccionDTO){
-
+        Optional<Cuenta> optionalCuenta = cuentaRepository.findById(transaccionDTO.getCuentaDestino());
+        optionalCuenta.ifPresent(cuenta -> {
+            Integer nuevaCantidad = cuenta.getSaldo() + transaccionDTO.getValor();
+            cuenta.setSaldo(nuevaCantidad);
+            cuentaRepository.save(cuenta);
+        });
     }
 
 
