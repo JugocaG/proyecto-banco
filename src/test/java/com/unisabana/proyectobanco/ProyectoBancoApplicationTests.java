@@ -10,8 +10,4 @@ import org.springframework.test.context.ActiveProfiles;
 
 class ProyectoBancoApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
-
 }
