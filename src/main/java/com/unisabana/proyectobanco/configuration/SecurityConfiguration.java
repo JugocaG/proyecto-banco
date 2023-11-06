@@ -15,6 +15,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration{
+
+    String administrador = "ADMINISTRADOR";
+    String usuario = "USUARIO";
     @Bean
     public PasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
@@ -24,13 +27,13 @@ public class SecurityConfiguration{
     public InMemoryUserDetailsManager userDetailsService() {
         UserDetails user1 = User.builder()
                 .username("juan")
-                .password(encoder().encode("1234"))
-                .roles("ADMINISTRADOR", "USUARIO")
+                .password(encoder().encode("ProyectoBanco#1234"))
+                .roles(administrador, usuario)
                 .build();
         UserDetails user2 = User.builder()
                 .username("sebastian")
-                .password(encoder().encode("1234"))
-                .roles("USUARIO")
+                .password(encoder().encode("ProyectoBanco#4321"))
+                .roles(usuario)
                 .build();
         return new InMemoryUserDetailsManager(user1, user2);
     }
@@ -40,10 +43,10 @@ public class SecurityConfiguration{
         http
                 .csrf().disable()
                 .cors().and()
-                .authorizeHttpRequests((authz) -> authz
-                        .antMatchers("/api/cliente/**").hasRole("ADMINISTRADOR")
-                        .antMatchers("/api/cuenta/**").hasRole("ADMINISTRADOR")
-                        .antMatchers("/api/transaccion/**").hasRole("USUARIO")
+                .authorizeHttpRequests(authz -> authz
+                        .antMatchers("/api/cliente/**").hasRole(administrador)
+                        .antMatchers("/api/cuenta/**").hasRole(administrador)
+                        .antMatchers("/api/transaccion/**").hasRole(usuario)
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());

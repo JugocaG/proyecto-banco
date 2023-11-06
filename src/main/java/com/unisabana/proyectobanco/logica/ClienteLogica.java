@@ -37,7 +37,7 @@ public class ClienteLogica {
         Optional<Cliente> optionalCliente = clienteRepository.findById(cuentaDTO.getIdPropietario());
 
         optionalCliente.ifPresent(cliente -> {
-            if (CuentaEnum.CUENTA_AHORROS.equals(cuentaDTO.getTipoCuenta())){
+            if (CuentaEnum.CUENTA_AHORROS.equals(cuentaDTO.getTipoCuenta())) {
                 Integer nuevaCantidad = cliente.getNumeroCuentasAhorro() + 1;
                 cliente.setNumeroCuentasAhorro(nuevaCantidad);
                 clienteRepository.save(cliente);
@@ -49,8 +49,8 @@ public class ClienteLogica {
                 Integer nuevaCantidad = cliente.getNumeroTarjetasCredito() + 1;
                 cliente.setNumeroTarjetasCredito(nuevaCantidad);
                 clienteRepository.save(cliente);
-            }
-        });
+            }}
+        );
     }
 
     public void eliminarCliente(ClienteDTO clienteDTO)throws IllegalArgumentException{
