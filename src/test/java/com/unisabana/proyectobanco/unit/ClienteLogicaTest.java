@@ -15,7 +15,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
-import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 class ClienteLogicaTest {
     @Mock
@@ -25,11 +24,6 @@ class ClienteLogicaTest {
     private CuentaRepository cuentaRepository;
     @InjectMocks
     private ClienteLogica clienteLogica;
-
-    @Test
-    void verCliente() {
-
-    }
 
 
     @Test
