@@ -16,8 +16,6 @@ import java.util.Optional;
 @AllArgsConstructor
 @Slf4j
 public class CuentaLogica {
-
-
     private CuentaRepository cuentaRepository;
 
     private ClienteRepository clienteRepository;

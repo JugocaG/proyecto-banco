@@ -7,13 +7,28 @@
 	},
 	"item": [
 		{
-			"name": "agregar_cuenta",
+			"name": "crear_cuenta",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "juan",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"numero_cuenta\": 13065,\r\n    \"tipo_cuenta\": \"TARJETA_CREDITO\", //Tambien puede ser CUENTA_AHORROS y CUENTA_CORRIENTE\r\n    \"nivel\": \"EJECUTIVA\",\r\n    \"id_propietario\": 249441\r\n}",
+					"raw": "{\r\n    \"tipoCuenta\": \"CUENTA_CORRIENTE\", //CUENTA_AHORROS, CUENTA_CORRIENTE y TARJETA_CREDITO\r\n    \"nivel\": \"EJECUTIVA\", //GENERAL, EJECUTIVA\r\n    \"idPropietario\": 1001\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,13 +36,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/cuentas/crear",
+					"raw": "localhost:8080/api/cuenta/crear",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"cuentas",
+						"api",
+						"cuenta",
 						"crear"
 					]
 				}
@@ -37,11 +53,26 @@
 		{
 			"name": "crear_cliente",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "juan",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 249441,\r\n    \"nombre\": \"Juan David\"\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Mariana Cordoba Supelano\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -49,14 +80,103 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/clientes/crear",
+					"raw": "localhost:8080/api/cliente/crear",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"clientes",
+						"api",
+						"cliente",
 						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "realizar_transaccion",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "juan",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cuentaOrigen\": 1001,\r\n    \"cuentaDestino\": 1003,\r\n    \"tipoTransaccion\": \"TRASFERENCIA_BANCARIA\", //DEPOSITO_EN_EFECTIVO, TRASFERENCIA_BANCARIA, CHEQUE, PAGO_TARJETA_CREDITO\r\n    \"valor\": 5000\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/transaccion/enviar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transaccion",
+						"enviar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deposito",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "juan",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cuentaDestino\": 1003,\r\n    \"tipoTransaccion\": \"DEPOSITO_EN_EFECTIVO\", //DEPOSITO_EN_EFECTIVO, TRASFERENCIA_BANCARIA, CHEQUE, PAGO_TARJETA_CREDITO\r\n    \"valor\": 100000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/transaccion/deposito",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transaccion",
+						"deposito"
 					]
 				}
 			},
@@ -65,15 +185,31 @@
 		{
 			"name": "ver_cuentas",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "juan",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/cuenta/ver",
+					"raw": "localhost:8080/api/cuenta/ver",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"cuenta",
 						"ver"
 					]
@@ -84,17 +220,156 @@
 		{
 			"name": "ver_clientes",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "juan",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/clientes/ver",
+					"raw": "localhost:8080/api/cliente/ver",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"clientes",
+						"api",
+						"cliente",
 						"ver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ver_transacciones",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "juan",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/transaccion/ver",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transaccion",
+						"ver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar_cliente",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "juan",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1002\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/cliente/eliminar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cliente",
+						"eliminar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar_cuenta",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "juan",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/cuenta/eliminar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuenta",
+						"eliminar"
 					]
 				}
 			},
