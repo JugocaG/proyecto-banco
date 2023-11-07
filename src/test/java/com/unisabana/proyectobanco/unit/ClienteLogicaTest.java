@@ -25,11 +25,6 @@ class ClienteLogicaTest {
     @InjectMocks
     private ClienteLogica clienteLogica;
 
-    @Test
-    void verCliente() {
-
-    }
-
 
     @Test
     void dado_estudiante_guardado_correctamente() {

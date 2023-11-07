@@ -41,23 +41,12 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation "org.springframework.boot:spring-boot-starter-security"
-    swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.47'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.14'
 
 
 }
-
-swaggerSources {
-    petstore {
-        inputFile = file('petstore.yaml')
-        code {
-            language = 'html'
-            jvmArgs = ['--add-opens=java.base/java.util=ALL-UNNAMED'] // for Swagger Codegen v3 on Java 16+
-        }
-    }
-}
-
-build.dependsOn generateSwaggerUI
 
 tasks.named('test') {
     useJUnitPlatform()
@@ -65,8 +54,6 @@ tasks.named('test') {
 pitest {
     junit5PluginVersion = "1.0.0"
 }
-
-
 
 jacoco {
     toolVersion = "0.8.9"
@@ -92,11 +79,3 @@ dockerCompose {
     useComposeFiles = ['docker-compose.yml']
 }
 
-//resolve {
-//    outputFileName = 'PetStoreAPI'
-//    outputFormat = 'JSON'
-//    prettyPrint = 'TRUE'
-//    classpath = sourceSets.main.runtimeClasspath
-//    resourcePackages = ['io.test']
-//    outputDir = file('test')
-//}

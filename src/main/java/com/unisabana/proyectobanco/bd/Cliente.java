@@ -10,17 +10,16 @@ import javax.persistence.*;
 @Table( name = "cliente")
 public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuencia_cliente")
+    @SequenceGenerator(name = "secuencia_cliente", sequenceName = "secuencia_cliente", allocationSize = 1, initialValue = 1000)
     private int id;
 
-    @Column
     private String nombre;
-    @Column
+
     private int numeroCuentasCorriente;
-    @Column
+
     private int numeroCuentasAhorro;
-    @Column
+
     private int numeroTarjetasCredito;
 
 }

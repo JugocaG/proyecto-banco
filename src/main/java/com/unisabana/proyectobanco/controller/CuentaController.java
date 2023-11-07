@@ -1,52 +1,54 @@
 package com.unisabana.proyectobanco.controller;
 
 import com.unisabana.proyectobanco.bd.Cuenta;
-import com.unisabana.proyectobanco.controller.dto.ClienteDTO;
+import com.unisabana.proyectobanco.bd.CuentaRepository;
 import com.unisabana.proyectobanco.controller.dto.CuentaDTO;
 import com.unisabana.proyectobanco.logica.ClienteLogica;
 import com.unisabana.proyectobanco.logica.CuentaLogica;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.http.converter.HttpMessageNotReadableException;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-@Getter
-@Setter
+@AllArgsConstructor
+@Slf4j
 @RestController
-@RequestMapping("/cuenta")
+@RequestMapping(path = "/api/cuenta")
 public class CuentaController {
 
     private CuentaLogica logicaCuenta;
     private ClienteLogica logicaCliente;
-
-    public CuentaController(CuentaLogica logicaCuenta, ClienteLogica logicaCliente) {
-        this.logicaCuenta = logicaCuenta;
-        this.logicaCliente = logicaCliente;
-    }
+    private CuentaRepository cuentaRepository;
 
     @GetMapping(path = "ver")
     public List<Cuenta> obtenerCuenta() {
-        return getLogicaCuenta().verCuenta();
+        return logicaCuenta.verCuenta();
     }
 
     @PostMapping(path = "crear")
     public String crearCuenta(@RequestBody CuentaDTO cuentaDTO){
         try{
+            logicaCuenta.verificarExistenciaCliente(cuentaDTO);
             logicaCuenta.crearCuenta(cuentaDTO);
-
             logicaCliente.sumarCuenta(cuentaDTO);
-            return "La cuenta se creo exitosamente";
+            log.info("Se creo la cuenta No." + (cuentaRepository.getNextValCuenta() - 1) + " a nombre del cliente No." + cuentaDTO.getIdPropietario());
+            return null;
         }
-        catch (HttpMessageNotReadableException ex){
-            return "El tipo de cuenta que ingreso no es valido";
+        catch (IllegalArgumentException exception){
+            return exception.getMessage();
         }
     }
 
     @DeleteMapping(path = "eliminar")
     public String eliminarCliente(@RequestBody CuentaDTO cuentaDTO){
-        logicaCuenta.eliminarCuenta(cuentaDTO);
-        return "El cliente se elimino con exito";
+        try
+        {
+            logicaCuenta.eliminarCuenta(cuentaDTO);
+            log.info("Se elimino la cuenta No." + cuentaDTO.getId());
+            return null;
+        }
+        catch (IllegalArgumentException exception){
+            return exception.getMessage();
+        }
     }
 }

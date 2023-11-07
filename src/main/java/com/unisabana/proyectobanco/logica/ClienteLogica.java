@@ -7,25 +7,18 @@ import com.unisabana.proyectobanco.bd.Cuenta;
 import com.unisabana.proyectobanco.bd.CuentaRepository;
 import com.unisabana.proyectobanco.controller.dto.ClienteDTO;
 import com.unisabana.proyectobanco.controller.dto.CuentaDTO;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
+@AllArgsConstructor
 @Service
 public class ClienteLogica {
 
     private ClienteRepository clienteRepository;
 
     private CuentaRepository cuentaRepository;
-
-
-    public ClienteLogica(ClienteRepository clienteRepository, CuentaRepository cuentaRepository) {
-        this.clienteRepository = clienteRepository;
-        this.cuentaRepository = cuentaRepository;
-    }
 
     public List<Cliente> verCliente(){
         return clienteRepository.findAll();
@@ -44,7 +37,7 @@ public class ClienteLogica {
         Optional<Cliente> optionalCliente = clienteRepository.findById(cuentaDTO.getIdPropietario());
 
         optionalCliente.ifPresent(cliente -> {
-            if (CuentaEnum.CUENTA_AHORROS.equals(cuentaDTO.getTipoCuenta())){
+            if (CuentaEnum.CUENTA_AHORROS.equals(cuentaDTO.getTipoCuenta())) {
                 Integer nuevaCantidad = cliente.getNumeroCuentasAhorro() + 1;
                 cliente.setNumeroCuentasAhorro(nuevaCantidad);
                 clienteRepository.save(cliente);
@@ -56,13 +49,20 @@ public class ClienteLogica {
                 Integer nuevaCantidad = cliente.getNumeroTarjetasCredito() + 1;
                 cliente.setNumeroTarjetasCredito(nuevaCantidad);
                 clienteRepository.save(cliente);
-            }
-        });
-
+            }}
+        );
     }
 
-    public void eliminarCliente(ClienteDTO clienteDTO){
-        clienteRepository.deleteById(clienteDTO.getId());
+    public void eliminarCliente(ClienteDTO clienteDTO)throws IllegalArgumentException{
+        Optional<Cliente> optionalCliente = clienteRepository.findById(clienteDTO.getId());
+        optionalCliente.ifPresent(cliente -> {
+            clienteRepository.deleteById(cliente.getId());
+        });
+
+        if (!optionalCliente.isPresent()) {
+            throw new IllegalArgumentException("No existe ningun cliente con la identificacion proporcionada");
+        }
+
     }
 
     public void eliminarCuentasCliente(ClienteDTO clienteDTO){
