@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration{
+public class    SecurityConfiguration{
 
     String administrador = "ADMINISTRADOR";
     String usuario = "USUARIO";

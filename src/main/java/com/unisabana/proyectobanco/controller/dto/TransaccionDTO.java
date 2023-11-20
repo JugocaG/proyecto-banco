@@ -18,4 +18,7 @@ public class TransaccionDTO {
 
     private int valor;
 
+    public TransaccionDTO() {
+
+    }
 }
