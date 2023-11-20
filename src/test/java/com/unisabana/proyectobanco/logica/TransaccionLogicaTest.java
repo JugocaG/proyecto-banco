@@ -9,9 +9,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
+import static com.unisabana.proyectobanco.TipoTransaccionEnum.DEPOSITO_EN_EFECTIVO;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.client.ExpectedCount.never;
 
 @ExtendWith(MockitoExtension.class)
 class TransaccionLogicaTest {
@@ -30,7 +30,7 @@ class TransaccionLogicaTest {
     @Test
     void restarDinero() {
         // Arrange
-        TransaccionDTO transaccionDTO = new TransaccionDTO();
+        TransaccionDTO transaccionDTO = new TransaccionDTO(1,2,DEPOSITO_EN_EFECTIVO,3 );
         transaccionDTO.setCuentaOrigen(123);
         transaccionDTO.setValor(1000);
 
@@ -50,7 +50,7 @@ class TransaccionLogicaTest {
     @Test
     void restarDineroTestCuentaNoExiste() {
         // Arrange
-        TransaccionDTO transaccionDTO = new TransaccionDTO();
+        TransaccionDTO transaccionDTO = new TransaccionDTO(1,2,DEPOSITO_EN_EFECTIVO,3 );
         transaccionDTO.setCuentaOrigen(456);
         transaccionDTO.setValor(1000);
 
@@ -63,24 +63,24 @@ class TransaccionLogicaTest {
     @Test
     void inyectarDinero(){
         // Arrange
-        TransaccionDTO transaccionDTO = new TransaccionDTO();
-        transaccionDTO.setCuentaDestino(123); // Replace with a valid account ID
+        TransaccionDTO transaccionDTO = new TransaccionDTO(1,2,DEPOSITO_EN_EFECTIVO,3 );
+        transaccionDTO.setCuentaDestino(123);
         transaccionDTO.setValor(1000);
 
-        Cuenta cuenta = new Cuenta(); // Replace with the actual structure of your Cuenta class
-        cuenta.setSaldo(500); // Set an initial balance for testing
+        Cuenta cuenta = new Cuenta();
+        cuenta.setSaldo(500);
 
         Optional<Cuenta> optionalCuenta = Optional.of(cuenta);
         CuentaRepository cuentaRepository = mock(CuentaRepository.class);
         when(cuentaRepository.findById(123)).thenReturn(optionalCuenta);
 
-        TransaccionLogica transaccionLogica = new TransaccionLogica(cuentaRepository); // Assuming YourClass has a constructor that accepts CuentaRepository
+        TransaccionLogica transaccionLogica = new TransaccionLogica(cuentaRepository);
 
         // Act
         assertDoesNotThrow(() ->  transaccionLogica.inyectarDinero(transaccionDTO));
 
         // Assert
-        verify(cuentaRepository, times(1)).save(any()); // Verify that save was called exactly once
+        verify(cuentaRepository, times(1)).save(any());
         assertEquals(1500, cuenta.getSaldo());
 
     }
