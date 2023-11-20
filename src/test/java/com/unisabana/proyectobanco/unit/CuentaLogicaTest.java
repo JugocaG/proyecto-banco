@@ -1,4 +1,4 @@
-package com.unisabana.proyectobanco.logica;
+package com.unisabana.proyectobanco.unit;
 import com.unisabana.proyectobanco.CuentaEnum;
 import com.unisabana.proyectobanco.NivelEnum;
 import com.unisabana.proyectobanco.bd.Cliente;
@@ -6,13 +6,18 @@ import com.unisabana.proyectobanco.bd.ClienteRepository;
 import com.unisabana.proyectobanco.bd.Cuenta;
 import com.unisabana.proyectobanco.bd.CuentaRepository;
 import com.unisabana.proyectobanco.controller.dto.CuentaDTO;
+import com.unisabana.proyectobanco.logica.CuentaLogica;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 class CuentaLogicaTest {
@@ -28,6 +33,30 @@ class CuentaLogicaTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
+    @Test
+    void verCuenta(){
+        // Arrange
+        Cuenta cuenta1 = new Cuenta();
+        cuenta1.setNumeroCuenta(1);
+        cuenta1.setSaldo(100);
+
+        Cuenta cuenta2 = new Cuenta();
+        cuenta2.setNumeroCuenta(2);
+        cuenta2.setSaldo(200);
+
+        List<Cuenta> cuentas = Arrays.asList(cuenta1, cuenta2);
+
+        // Mocking the behavior of cuentaRepository
+        when(cuentaRepository.findAll()).thenReturn(cuentas);
+
+        // Act
+        List<Cuenta> result = cuentaLogica.verCuenta();
+
+        // Assert
+        assertEquals(cuentas, result);
+
+    }
+
 
     @Test
     void verificarExistenciaCliente() {
