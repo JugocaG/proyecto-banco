@@ -19,4 +19,7 @@ public class CuentaDTO {
     private NivelEnum nivel;
 
     private int idPropietario;
+
+
+
 }
