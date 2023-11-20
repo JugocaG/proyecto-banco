@@ -18,7 +18,7 @@ public class TransaccionLogica {
     private CuentaRepository cuentaRepository;
     private TransaccionRepository transaccionRepository;
 
-    public TransaccionLogica(CuentaRepository cuentaRepository, TransaccionRepository transaccionRepository) {
+    public TransaccionLogica(CuentaRepository cuentaRepository) {
         this.cuentaRepository = cuentaRepository;
         this.transaccionRepository = transaccionRepository;
     }
