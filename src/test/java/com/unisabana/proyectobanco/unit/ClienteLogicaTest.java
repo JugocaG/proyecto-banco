@@ -1,7 +1,7 @@
 package com.unisabana.proyectobanco.unit;
 
-import com.unisabana.proyectobanco.CuentaEnum;
-import com.unisabana.proyectobanco.NivelEnum;
+import com.unisabana.proyectobanco.vo.CuentaEnum;
+import com.unisabana.proyectobanco.vo.NivelEnum;
 import com.unisabana.proyectobanco.bd.Cliente;
 import com.unisabana.proyectobanco.bd.ClienteRepository;
 import com.unisabana.proyectobanco.bd.CuentaRepository;

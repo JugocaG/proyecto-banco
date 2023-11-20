@@ -1,12 +1,10 @@
 package com.unisabana.proyectobanco.bd;
 
-import com.unisabana.proyectobanco.CuentaEnum;
-import com.unisabana.proyectobanco.NivelEnum;
+import com.unisabana.proyectobanco.vo.CuentaEnum;
+import com.unisabana.proyectobanco.vo.NivelEnum;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
-
 
 @Getter
 @Setter

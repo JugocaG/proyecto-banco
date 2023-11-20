@@ -1,6 +1,6 @@
 package com.unisabana.proyectobanco.logica;
 
-import com.unisabana.proyectobanco.CuentaEnum;
+import com.unisabana.proyectobanco.vo.CuentaEnum;
 import com.unisabana.proyectobanco.bd.Cliente;
 import com.unisabana.proyectobanco.bd.ClienteRepository;
 import com.unisabana.proyectobanco.bd.Cuenta;

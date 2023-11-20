@@ -1,6 +1,6 @@
 package com.unisabana.proyectobanco.bd;
 
-import com.unisabana.proyectobanco.TipoTransaccionEnum;
+import com.unisabana.proyectobanco.vo.TipoTransaccionEnum;
 import lombok.Getter;
 import lombok.Setter;
 
