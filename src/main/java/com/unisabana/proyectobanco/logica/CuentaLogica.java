@@ -20,6 +20,10 @@ public class CuentaLogica {
 
     private ClienteRepository clienteRepository;
 
+    public CuentaLogica() {
+
+    }
+
     public List<Cuenta> verCuenta(){
         return cuentaRepository.findAll();
     }
