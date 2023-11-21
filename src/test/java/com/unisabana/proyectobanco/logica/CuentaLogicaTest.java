@@ -1,11 +1,11 @@
 package com.unisabana.proyectobanco.logica;
-import com.unisabana.proyectobanco.CuentaEnum;
-import com.unisabana.proyectobanco.NivelEnum;
 import com.unisabana.proyectobanco.bd.Cliente;
 import com.unisabana.proyectobanco.bd.ClienteRepository;
 import com.unisabana.proyectobanco.bd.Cuenta;
 import com.unisabana.proyectobanco.bd.CuentaRepository;
 import com.unisabana.proyectobanco.controller.dto.CuentaDTO;
+import com.unisabana.proyectobanco.vo.CuentaEnum;
+import com.unisabana.proyectobanco.vo.NivelEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

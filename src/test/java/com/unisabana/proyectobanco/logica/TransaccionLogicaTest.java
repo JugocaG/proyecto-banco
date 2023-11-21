@@ -9,7 +9,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
-import static com.unisabana.proyectobanco.TipoTransaccionEnum.DEPOSITO_EN_EFECTIVO;
+import static com.unisabana.proyectobanco.vo.TipoTransaccionEnum.DEPOSITO_EN_EFECTIVO;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
