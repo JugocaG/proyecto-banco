@@ -1,10 +1,12 @@
-package com.unisabana.proyectobanco.configuration;
+package com.unisabana.proyectobanco.dto;
 
 import lombok.Data;
 
 @Data
-public class AuthCredentials {
+public class AuthenticationDTO {
+
     private String email;
+
     private String password;
 
 }

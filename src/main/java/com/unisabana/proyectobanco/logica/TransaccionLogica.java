@@ -23,7 +23,7 @@ public class TransaccionLogica {
         this.transaccionRepository = transaccionRepository;
     }
 
-    public List<Transaccion> verTrasacciones(){
+    public List<Transaccion> verTransacciones(){
         return transaccionRepository.findAll();
     }
 
