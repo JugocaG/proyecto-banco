@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @Getter
 @Setter
-
 @Service
 public class TransaccionLogica {
 
@@ -23,7 +22,7 @@ public class TransaccionLogica {
         this.transaccionRepository = transaccionRepository;
     }
 
-    public List<Transaccion> verTrasacciones(){
+    public List<Transaccion> verTransacciones(){
         return transaccionRepository.findAll();
     }
 
@@ -67,7 +66,7 @@ public class TransaccionLogica {
         Transaccion transaccion = new Transaccion();
         transaccion.setCuentaOrigen(transaccionDTO.getCuentaOrigen());
         transaccion.setCuentaDestino(transaccionDTO.getCuentaDestino());
-        transaccion.setTipoTransaccion(transaccion.getTipoTransaccion());
+        transaccion.setTipoTransaccion(transaccionDTO.getTipoTransaccion());  // Corregido para asignar el valor correcto
         transaccion.setValor(transaccionDTO.getValor());
         transaccion.setFecha(LocalDateTime.now());
         transaccionRepository.save(transaccion);
@@ -76,8 +75,8 @@ public class TransaccionLogica {
 
     public Transaccion guardarDeposito(TransaccionDTO transaccionDTO){
         Transaccion transaccion = new Transaccion();
-        transaccion.setCuentaOrigen(1);
-        transaccion.setTipoTransaccion(transaccion.getTipoTransaccion());
+        transaccion.setCuentaOrigen(1);  // Ajusta según tu lógica
+        transaccion.setTipoTransaccion(transaccionDTO.getTipoTransaccion());
         transaccion.setCuentaDestino(transaccionDTO.getCuentaDestino());
         transaccion.setValor(transaccionDTO.getValor());
         transaccion.setFecha(LocalDateTime.now());

@@ -22,7 +22,7 @@ public class TransaccionController {
 
     @GetMapping(path = "ver")
     public List<Transaccion> obtenerTransaccion() {
-        return logicaTransaccion.verTrasacciones();
+        return logicaTransaccion.verTransacciones();
     }
 
     @PostMapping(path = "enviar")
