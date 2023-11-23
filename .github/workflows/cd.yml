@@ -19,5 +19,5 @@ jobs:
           tags:  latest
           registry: docker.io
           dockerfile: Dockerfile
-          username: ${{ secrets.BANCO_DOCKER_USERNAME }}
-          password: ${{ secrets.BANCO_DOCKER_PASSWORD }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
