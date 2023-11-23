@@ -14,7 +14,10 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping(path = "/api/cuenta")
+@CrossOrigin(origins = {"http://localhost:4200/"})
 public class CuentaController {
+
+    final int RESTA_ULTIMO_NUMERO_SECUENCIA = 1;
 
     private CuentaLogica logicaCuenta;
     private ClienteLogica logicaCliente;
@@ -31,7 +34,7 @@ public class CuentaController {
             logicaCuenta.verificarExistenciaCliente(cuentaDTO);
             logicaCuenta.crearCuenta(cuentaDTO);
             logicaCliente.sumarCuenta(cuentaDTO);
-            log.info("Se creo la cuenta No." + (cuentaRepository.getNextValCuenta() - 1) + " a nombre del cliente No." + cuentaDTO.getIdPropietario());
+            log.info("Se creo la cuenta No." + (cuentaRepository.getNextValCuenta() - RESTA_ULTIMO_NUMERO_SECUENCIA) + " a nombre del cliente No." + cuentaDTO.getIdPropietario());
             return null;
         }
         catch (IllegalArgumentException exception){

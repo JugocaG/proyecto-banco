@@ -1,24 +1,25 @@
 package com.unisabana.proyectobanco.unit;
-import com.unisabana.proyectobanco.CuentaEnum;
-import com.unisabana.proyectobanco.NivelEnum;
+
 import com.unisabana.proyectobanco.bd.Cliente;
 import com.unisabana.proyectobanco.bd.ClienteRepository;
 import com.unisabana.proyectobanco.bd.Cuenta;
 import com.unisabana.proyectobanco.bd.CuentaRepository;
 import com.unisabana.proyectobanco.controller.dto.CuentaDTO;
 import com.unisabana.proyectobanco.logica.CuentaLogica;
+import com.unisabana.proyectobanco.vo.CuentaEnum;
+import com.unisabana.proyectobanco.vo.NivelEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 class CuentaLogicaTest {
     @InjectMocks

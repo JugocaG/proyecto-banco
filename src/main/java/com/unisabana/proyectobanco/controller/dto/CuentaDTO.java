@@ -1,7 +1,7 @@
 package com.unisabana.proyectobanco.controller.dto;
 
-import com.unisabana.proyectobanco.CuentaEnum;
-import com.unisabana.proyectobanco.NivelEnum;
+import com.unisabana.proyectobanco.vo.CuentaEnum;
+import com.unisabana.proyectobanco.vo.NivelEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,8 +12,6 @@ import lombok.Setter;
 public class CuentaDTO {
 
     private int id;
-
-
     private CuentaEnum tipoCuenta;
 
     private NivelEnum nivel;

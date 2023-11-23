@@ -1,4 +1,4 @@
-package com.unisabana.proyectobanco;
+package com.unisabana.proyectobanco.vo;
 
 public enum NivelEnum {
     GENERAL, EJECUTIVA
