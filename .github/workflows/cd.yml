@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: jugocag/proyecto-banco:${{ github.sha }}
+          tags: seda1504/proyecto-banco:${{ github.sha }}
