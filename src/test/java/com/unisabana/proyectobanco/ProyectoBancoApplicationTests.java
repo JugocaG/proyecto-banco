@@ -2,7 +2,7 @@ package com.unisabana.proyectobanco;
 import com.unisabana.proyectobanco.bd.Cliente;
 import com.unisabana.proyectobanco.bd.ClienteRepository;
 import com.unisabana.proyectobanco.bd.CuentaRepository;
-import com.unisabana.proyectobanco.controller.dto.ClienteDTO;
+import com.unisabana.proyectobanco.dto.ClienteDTO;
 import com.unisabana.proyectobanco.logica.ClienteLogica;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

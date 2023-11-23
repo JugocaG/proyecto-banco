@@ -1,4 +1,4 @@
-package com.unisabana.proyectobanco.controller.dto;
+package com.unisabana.proyectobanco.dto;
 
 import com.unisabana.proyectobanco.vo.CuentaEnum;
 import com.unisabana.proyectobanco.vo.NivelEnum;

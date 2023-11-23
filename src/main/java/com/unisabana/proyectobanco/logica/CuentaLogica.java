@@ -4,7 +4,7 @@ import com.unisabana.proyectobanco.bd.Cliente;
 import com.unisabana.proyectobanco.bd.ClienteRepository;
 import com.unisabana.proyectobanco.bd.Cuenta;
 import com.unisabana.proyectobanco.bd.CuentaRepository;
-import com.unisabana.proyectobanco.controller.dto.CuentaDTO;
+import com.unisabana.proyectobanco.dto.CuentaDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

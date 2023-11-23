@@ -1,4 +1,4 @@
-package com.unisabana.proyectobanco.controller.dto;
+package com.unisabana.proyectobanco.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
