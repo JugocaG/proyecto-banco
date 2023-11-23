@@ -3,7 +3,6 @@ package com.unisabana.proyectobanco.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.unisabana.proyectobanco.bd.Cliente;
-import com.unisabana.proyectobanco.controller.dto.ClienteDTO;
 import com.unisabana.proyectobanco.logica.ClienteLogica;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
