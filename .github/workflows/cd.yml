@@ -4,7 +4,6 @@ on:
     branches: ["master"]
 permissions:
   contents: read
-
 jobs:
   cd:
     runs-on: ubuntu-latest
