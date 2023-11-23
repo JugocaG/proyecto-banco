@@ -1,12 +1,10 @@
 package com.unisabana.proyectobanco.bd;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Setter
-@Getter
+@Data
 @Table( name = "cliente")
 public class Cliente {
     @Id

@@ -2,12 +2,10 @@ package com.unisabana.proyectobanco.bd;
 
 import com.unisabana.proyectobanco.vo.CuentaEnum;
 import com.unisabana.proyectobanco.vo.NivelEnum;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import javax.persistence.*;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table (name = "cuenta")
 public class Cuenta {
