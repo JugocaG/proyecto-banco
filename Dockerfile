@@ -5,7 +5,7 @@ FROM eclipse-temurin:20-jdk
 WORKDIR /app
 
 # Copia el archivo JAR de tu aplicación al contenedor
-COPY build/libs/proyectoBanco-0.0.1-SNAPSHOT.jar /app/app.jar
+COPY build/libs/proyectoBanco-0.0.1-SNAPSHOT-plain.jar /app/app.jar
 
 # Expone el puerto en el que la aplicación escucha
 EXPOSE 8080
