@@ -2,7 +2,7 @@ package com.unisabana.proyectobanco.controller;
 
 import com.unisabana.proyectobanco.bd.Cuenta;
 import com.unisabana.proyectobanco.bd.CuentaRepository;
-import com.unisabana.proyectobanco.controller.dto.CuentaDTO;
+import com.unisabana.proyectobanco.dto.CuentaDTO;
 import com.unisabana.proyectobanco.logica.ClienteLogica;
 import com.unisabana.proyectobanco.logica.CuentaLogica;
 import lombok.AllArgsConstructor;

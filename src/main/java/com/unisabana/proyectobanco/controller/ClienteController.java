@@ -3,7 +3,7 @@ package com.unisabana.proyectobanco.controller;
 import com.unisabana.proyectobanco.bd.ClienteRepository;
 import com.unisabana.proyectobanco.logica.ClienteLogica;
 import com.unisabana.proyectobanco.bd.Cliente;
-import com.unisabana.proyectobanco.controller.dto.ClienteDTO;
+import com.unisabana.proyectobanco.dto.ClienteDTO;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

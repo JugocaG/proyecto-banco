@@ -1,7 +1,7 @@
 package com.unisabana.proyectobanco.logica;
 
 import com.unisabana.proyectobanco.bd.*;
-import com.unisabana.proyectobanco.controller.dto.TransaccionDTO;
+import com.unisabana.proyectobanco.dto.TransaccionDTO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Service;

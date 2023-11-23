@@ -51,21 +51,20 @@ dependencies {
     implementation 'com.vaadin.external.google:android-json:0.0.20131108.vaadin1'
     implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final'
 
-
-
-
-
-
-
-
-
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+
 pitest {
     junit5PluginVersion = "1.0.0"
+    // Configuración general de Pitest
+    targetClasses = ['com.unisabana.proyectobanco.**'] // Puedes ajustar el paquete base
+
+    // Exclusión de clases o paquetes específicos
+    excludedClasses = ['com.unisabana.proyectobanco.configuration.**', 'com.unisabana.proyectobanco.bd.**', 'com.unisabana.proyectobanco.dto.**']
 }
 
 jacoco {
@@ -79,6 +78,18 @@ jacocoTestReport {
         xml.required = true
         csv.required = true
         html.outputLocation = layout.buildDirectory.dir('reports/jacoco.html')
+    }
+
+    afterEvaluate {
+        // Excluir carpetas específicas
+        def excludeDirs = ['**/bd', '**/configuration', '**/dto' , '**/vo']
+
+        // Configurar la exclusión
+        afterEvaluate {
+            classDirectories.setFrom(files(classDirectories.files.collect {
+                fileTree(dir: it, excludes: excludeDirs)
+            }))
+        }
     }
 }
 

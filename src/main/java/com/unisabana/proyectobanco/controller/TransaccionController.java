@@ -2,7 +2,7 @@ package com.unisabana.proyectobanco.controller;
 
 import com.unisabana.proyectobanco.bd.Transaccion;
 import com.unisabana.proyectobanco.bd.TransaccionRepository;
-import com.unisabana.proyectobanco.controller.dto.TransaccionDTO;
+import com.unisabana.proyectobanco.dto.TransaccionDTO;
 import com.unisabana.proyectobanco.logica.TransaccionLogica;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

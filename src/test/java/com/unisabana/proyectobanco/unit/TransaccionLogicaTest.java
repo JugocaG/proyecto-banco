@@ -1,7 +1,7 @@
 package com.unisabana.proyectobanco.unit;
 import com.unisabana.proyectobanco.bd.Cuenta;
 import com.unisabana.proyectobanco.bd.CuentaRepository;
-import com.unisabana.proyectobanco.controller.dto.TransaccionDTO;
+import com.unisabana.proyectobanco.dto.TransaccionDTO;
 import com.unisabana.proyectobanco.logica.TransaccionLogica;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

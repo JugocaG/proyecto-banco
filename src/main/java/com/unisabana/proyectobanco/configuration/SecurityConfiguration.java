@@ -33,6 +33,8 @@ public class SecurityConfiguration {
         return httpSecurity
                 .csrf().disable()
                 .authorizeHttpRequests()
+                .requestMatchers("/api/cliente/ver")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
