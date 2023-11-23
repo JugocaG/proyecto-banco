@@ -21,8 +21,11 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '19'
-      - name: Montado
-        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-        with:
-          arguments: build
+
+      - name: Make Gradlew Executable
+        run: chmod +x ./gradlew
+          - name: Montado
+           uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+           with:
+               arguments: build
 
