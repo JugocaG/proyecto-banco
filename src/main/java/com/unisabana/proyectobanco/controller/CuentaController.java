@@ -14,6 +14,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping(path = "/api/cuenta")
+@CrossOrigin(origins = {"http://localhost:4200/"})
 public class CuentaController {
 
     final int RESTA_ULTIMO_NUMERO_SECUENCIA = 1;

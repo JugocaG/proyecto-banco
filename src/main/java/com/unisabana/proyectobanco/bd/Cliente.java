@@ -1,7 +1,7 @@
 package com.unisabana.proyectobanco.bd;
 
+import jakarta.persistence.*;
 import lombok.Data;
-import javax.persistence.*;
 
 @Entity
 @Data

@@ -60,9 +60,9 @@ public class SecurityConfiguration {
 
     }
 
-    public static void main(String[] args) {
-        System.out.println("pass: " + new BCryptPasswordEncoder().encode("pene"));
-    }
+//    public static void main(String[] args) {
+//        System.out.println("pass: " + new BCryptPasswordEncoder().encode("juangomez"));
+//    }
 
 
 }

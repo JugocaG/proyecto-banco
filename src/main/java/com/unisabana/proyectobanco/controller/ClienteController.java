@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping(path = "/api/cliente")
+@CrossOrigin(origins = {"http://localhost:4200/"})
 public class ClienteController {
 
     private ClienteLogica logicaCliente;

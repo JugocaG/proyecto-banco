@@ -14,6 +14,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping(path = "/api/transaccion")
+@CrossOrigin(origins = {"http://localhost:4200/"})
 public class TransaccionController {
 
     private TransaccionLogica logicaTransaccion;

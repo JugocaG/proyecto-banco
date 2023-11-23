@@ -3,7 +3,7 @@ package com.unisabana.proyectobanco.bd;
 import com.unisabana.proyectobanco.vo.CuentaEnum;
 import com.unisabana.proyectobanco.vo.NivelEnum;
 import lombok.Data;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Data
 @Entity
