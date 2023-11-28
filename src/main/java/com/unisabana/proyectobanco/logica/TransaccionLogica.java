@@ -2,6 +2,8 @@ package com.unisabana.proyectobanco.logica;
 
 import com.unisabana.proyectobanco.bd.*;
 import com.unisabana.proyectobanco.dto.TransaccionDTO;
+import com.unisabana.proyectobanco.vo.TipoTransaccionEnum;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
@@ -9,18 +11,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-@Getter
-@Setter
+@AllArgsConstructor
 @Service
 public class TransaccionLogica {
 
     private CuentaRepository cuentaRepository;
     private TransaccionRepository transaccionRepository;
-
-    public TransaccionLogica(CuentaRepository cuentaRepository) {
-        this.cuentaRepository = cuentaRepository;
-        this.transaccionRepository = transaccionRepository;
-    }
 
     public List<Transaccion> verTransacciones(){
         return transaccionRepository.findAll();
@@ -66,7 +62,7 @@ public class TransaccionLogica {
         Transaccion transaccion = new Transaccion();
         transaccion.setCuentaOrigen(transaccionDTO.getCuentaOrigen());
         transaccion.setCuentaDestino(transaccionDTO.getCuentaDestino());
-        transaccion.setTipoTransaccion(transaccionDTO.getTipoTransaccion());  // Corregido para asignar el valor correcto
+        transaccion.setTipoTransaccion(TipoTransaccionEnum.TRASFERENCIA_BANCARIA);
         transaccion.setValor(transaccionDTO.getValor());
         transaccion.setFecha(LocalDateTime.now());
         transaccionRepository.save(transaccion);
@@ -75,16 +71,14 @@ public class TransaccionLogica {
 
     public Transaccion guardarDeposito(TransaccionDTO transaccionDTO){
         Transaccion transaccion = new Transaccion();
-        transaccion.setCuentaOrigen(1);  // Ajusta según tu lógica
-        transaccion.setTipoTransaccion(transaccionDTO.getTipoTransaccion());
+        transaccion.setCuentaOrigen(1);
+        transaccion.setTipoTransaccion(TipoTransaccionEnum.DEPOSITO_EN_EFECTIVO);
         transaccion.setCuentaDestino(transaccionDTO.getCuentaDestino());
         transaccion.setValor(transaccionDTO.getValor());
         transaccion.setFecha(LocalDateTime.now());
         transaccionRepository.save(transaccion);
         return transaccion;
     }
-
-
 
 
 }
