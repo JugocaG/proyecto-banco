@@ -30,7 +30,7 @@ public class ClienteController {
         return null;
     }
 
-    @DeleteMapping(path = "eliminar")
+    @PostMapping(path = "eliminar")
     public String eliminarCliente(@RequestBody ClienteDTO clienteDTO){
         try{
             logicaCliente.eliminarCuentasCliente(clienteDTO);

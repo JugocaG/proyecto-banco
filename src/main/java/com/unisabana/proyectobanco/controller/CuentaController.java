@@ -41,7 +41,7 @@ public class CuentaController {
         }
     }
 
-    @DeleteMapping(path = "eliminar")
+    @PostMapping(path = "eliminar")
     public String eliminarCliente(@RequestBody CuentaDTO cuentaDTO){
         try
         {

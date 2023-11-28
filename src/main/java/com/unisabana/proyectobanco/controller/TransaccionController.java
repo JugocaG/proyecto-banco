@@ -26,13 +26,17 @@ public class TransaccionController {
 
     @PostMapping(path = "enviar")
     public String enviarDinero(@RequestBody TransaccionDTO transaccionDTO){
+        Integer verificador = 0;
         try{
             logicaTransaccion.verificarSaldo(transaccionDTO);
             logicaTransaccion.inyectarDinero(transaccionDTO);
-            logicaTransaccion.guardarTransaccion(transaccionDTO);
             logicaTransaccion.restarDinero(transaccionDTO);
             log.info("Se realizo la transaccion No." + (transaccionRepository.getNextValTransaccion() - 1) + " tipo " + transaccionDTO.getTipoTransaccion() + ". Se enviaron " + transaccionDTO.getValor() + " de la cuenta No." + transaccionDTO.getCuentaOrigen() +
                     " a la cuenta No." + transaccionDTO.getCuentaDestino());
+            verificador = 1;
+            if (verificador == 1){
+                logicaTransaccion.guardarTransaccion(transaccionDTO);
+            }
             return null;
         }
         catch (IllegalArgumentException exception){

@@ -1,5 +1,7 @@
 FROM eclipse-temurin:20-jdk
-VOLUME /tmp
-ARG JAR_FILE
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+#COPY build/libs/proyectoBanco-0.0.1-SNAPSHOT.jar app.jar
+#ENTRYPOINT ["java","-jar","/app.jar"]
+
+ADD build/libs/proyectoBanco-0.0.1-SNAPSHOT.jar proyectoBanco-0.0.1-SNAPSHOT.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "proyectoBanco-0.0.1-SNAPSHOT.jar"]
